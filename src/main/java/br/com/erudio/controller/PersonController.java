@@ -1,6 +1,6 @@
 package br.com.erudio.controller;
 
-import br.com.erudio.model.Person;
+import br.com.erudio.data.dto.PersonDTO;
 import br.com.erudio.service.PersonService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,22 +18,22 @@ public class PersonController {
     }
 
     @GetMapping
-    public List<Person> findAll() {
+    public List<PersonDTO> findAll() {
         return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public Person findById(@PathVariable Long id) {
+    public PersonDTO findById(@PathVariable Long id) {
         return service.findById(id);
     }
 
     @PostMapping
-    public Person create(@RequestBody Person person) {
+    public PersonDTO create(@RequestBody PersonDTO person) {
         return service.create(person);
     }
 
     @PutMapping
-    public Person update(@RequestBody Person person) {
+    public PersonDTO update(@RequestBody PersonDTO person) {
         return service.update(person);
     }
 
