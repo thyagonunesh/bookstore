@@ -3,17 +3,16 @@ package br.com.erudio.service;
 import br.com.erudio.exception.ResourceNotFoundException;
 import br.com.erudio.model.Person;
 import br.com.erudio.repository.PersonRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.logging.Logger;
 
 @Service
 public class PersonService {
 
-    private final AtomicLong counter = new AtomicLong();
-    private final Logger logger = Logger.getLogger(PersonService.class.getName());
+    private final Logger logger = LoggerFactory.getLogger(PersonService.class);
 
     private final PersonRepository repository;
 
