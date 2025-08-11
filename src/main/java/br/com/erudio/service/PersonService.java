@@ -1,6 +1,7 @@
 package br.com.erudio.service;
 
-import br.com.erudio.data.dto.PersonDTO;
+import br.com.erudio.data.dto.v1.PersonDTO;
+import br.com.erudio.data.dto.v2.PersonDTOV2;
 import br.com.erudio.exception.ResourceNotFoundException;
 import br.com.erudio.mapper.ObjectMapper;
 import br.com.erudio.model.Person;
@@ -9,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -46,6 +48,17 @@ public class PersonService {
         Person entity = objectMapper.parseObject(person, Person.class);
 
         return objectMapper.parseObject(repository.save(entity), PersonDTO.class);
+    }
+
+    public PersonDTOV2 createV2(PersonDTOV2  person) {
+        logger.info("Creating one Person");
+
+        Person entity = objectMapper.parseObject(person, Person.class);
+
+        PersonDTOV2 personDTOV2 = objectMapper.parseObject(repository.save(entity), PersonDTOV2.class);
+        personDTOV2.setBirthDay(new Date());
+
+        return personDTOV2;
     }
 
     public PersonDTO update(PersonDTO personDto) {

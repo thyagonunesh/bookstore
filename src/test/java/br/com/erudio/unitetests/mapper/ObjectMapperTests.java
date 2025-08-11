@@ -1,6 +1,6 @@
 package br.com.erudio.unitetests.mapper;
 
-import br.com.erudio.data.dto.PersonDTO;
+import br.com.erudio.data.dto.v1.PersonDTO;
 import br.com.erudio.mapper.ObjectMapper;
 import br.com.erudio.model.Person;
 import br.com.erudio.unitetests.mapper.mocks.MockPerson;
