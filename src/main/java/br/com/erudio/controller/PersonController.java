@@ -2,6 +2,7 @@ package br.com.erudio.controller;
 
 import br.com.erudio.data.dto.PersonDTO;
 import br.com.erudio.service.PersonService;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,22 +18,57 @@ public class PersonController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping(
+            produces = {
+                    MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_YAML_VALUE
+            }
+    )
     public List<PersonDTO> findAll() {
         return service.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(
+        value = "/{id}",
+        produces = {
+                MediaType.APPLICATION_JSON_VALUE,
+                MediaType.APPLICATION_XML_VALUE,
+                MediaType.APPLICATION_YAML_VALUE
+        }
+    )
     public PersonDTO findById(@PathVariable Long id) {
         return service.findById(id);
     }
 
-    @PostMapping
+    @PostMapping(
+            consumes = {
+                    MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_YAML_VALUE
+            },
+            produces = {
+                    MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_YAML_VALUE
+            }
+    )
     public PersonDTO create(@RequestBody PersonDTO person) {
         return service.create(person);
     }
 
-    @PutMapping
+    @PutMapping(
+            consumes = {
+                    MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_YAML_VALUE
+            },
+            produces = {
+                    MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_YAML_VALUE
+            }
+    )
     public PersonDTO update(@RequestBody PersonDTO person) {
         return service.update(person);
     }
