@@ -5,6 +5,7 @@ import br.com.erudio.service.PersonService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -24,7 +25,13 @@ public class PersonController {
 
     @GetMapping("/{id}")
     public PersonDTO findById(@PathVariable Long id) {
-        return service.findById(id);
+        PersonDTO person = service.findById(id);
+        person.setBirthDay(new Date());
+//        person.setPhoneNumber("99999999");
+        person.setPhoneNumber("");
+        person.setLastName(null);
+        person.setSensitiveData("Foo Bar");
+        return person;
     }
 
     @PostMapping
