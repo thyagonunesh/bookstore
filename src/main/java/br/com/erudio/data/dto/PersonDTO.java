@@ -3,11 +3,12 @@ package br.com.erudio.data.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.hateoas.RepresentationModel;
 
 @NoArgsConstructor
 @Getter
 @Setter
-public class PersonDTO {
+public class PersonDTO extends RepresentationModel<PersonDTO> {
 
     private Long id;
     private String firstName;
